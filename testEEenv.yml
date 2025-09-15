@@ -1,0 +1,20 @@
+---
+- name: Detect if running in an Execution Environment
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+    - name: Show Python executable path
+      debug:
+        msg: "Python executable: {{ ansible_python.executable }}"
+
+    - name: Show hostname of the node
+      command: hostname
+      register: host
+    - debug:
+        var: host.stdout
+
+    - name: Check for typical EE environment variable
+      debug:
+        msg: >
+          EE detected: {{ 'ANSIBLE_CONTAINER' in ansible_env }}
