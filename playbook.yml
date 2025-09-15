@@ -1,0 +1,14 @@
+---
+- name: Test archive module from community.general
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create a sample file
+      copy:
+        dest: /tmp/hello.txt
+        content: "Hello from AAP!"
+
+    - name: Archive the file into /tmp/hello.tar.gz
+      community.general.archive:
+        path: /tmp/hello.txt
+        dest: /tmp/hello.tar.gz
