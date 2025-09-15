@@ -3,14 +3,26 @@
   hosts: localhost
   gather_facts: false
   tasks:
+    - name: Show /tmp contents
+      command: ls -la /tmp
+      register: tmp_files
+
+    - debug:
+        var: tmp_files.stdout_lines
+        
     - name: Create a sample file
       copy:
-        dest: /home/aap/hello.txt
+        dest: /tmp/hello.txt
         content: "Hello from AAP!"
-      delegate_to: localhost
 
     - name: Archive the file into /tmp/hello.tar.gz
       community.general.archive:
-        path: /home/aap/hello.txt
-        dest: /home/aap/hello.tar.gz
-      delegate_to: localhost
+        path: /tmp/hello.txt
+        dest: /tmp/hello.tar.gz
+
+    - name: Show /tmp contents
+      command: ls -la /tmp
+      register: tmp_files
+
+    - debug:
+        var: tmp_files.stdout_lines
