@@ -5,11 +5,11 @@
   tasks:
     - name: Create a sample file
       copy:
-        dest: /tmp/hello.txt
+        dest: /home/aap/hello.txt
         content: "Hello from AAP!"
 
     - name: Archive the file into /tmp/hello.tar.gz
       community.general.archive:
-        path: /tmp/hello.txt
-        dest: /tmp/hello.tar.gz
+        path: /home/aap/hello.txt
+        dest: /home/aap/hello.tar.gz
       delegate_to: localhost
