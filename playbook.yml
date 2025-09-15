@@ -12,3 +12,4 @@
       community.general.archive:
         path: /tmp/hello.txt
         dest: /tmp/hello.tar.gz
+      delegate_to: localhost
