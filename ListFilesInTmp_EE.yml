@@ -1,0 +1,10 @@
+- name: List /tmp in EE
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Show /tmp contents
+      command: ls -la /tmp
+      register: tmp_files
+
+    - debug:
+        var: tmp_files.stdout_lines
