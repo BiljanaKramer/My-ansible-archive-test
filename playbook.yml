@@ -7,6 +7,7 @@
       copy:
         dest: /home/aap/hello.txt
         content: "Hello from AAP!"
+      delegate_to: localhost
 
     - name: Archive the file into /tmp/hello.tar.gz
       community.general.archive:
